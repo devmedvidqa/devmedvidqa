@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MedVidQA 2023</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- style -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/r-2.2.3/datatables.min.css"/>
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- javascript libraries -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="js/jquery.latest.min.js"></script>
+    <script type="text/javascript" src="js/jquery.csv.min.js"></script>
+    <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="js/datatables.min.js"></script>
+
+    <!-- datatables deps -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/r-2.2.3/datatables.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-30FQTDJR3S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-30FQTDJR3S');
+</script>
+    <!-- Simple js to show/hide a div element -->
+    <script>
+        function myFunction(el) {
+            var x = document.getElementById(el);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+
+    
+</head>
+
+<body id="_index">
+
+<nav>
+<section style="text-align: right;">
+    <span class="home">
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="#idates"><strong>Important Dates</strong></a>
+        <a href="#tasks"><strong>Tasks</strong></a>
+        <a href="#datasets"><strong>Datasets</strong></a>
+        <a href="#eval"><strong>Evaluation</strong></a>
+  <a href="#organizers"><strong>Organizers</strong></a>
+    </span>
+</section>
+</nav>
+
+    <div style="height: 325px; width: 100%; overflow:hidden;   position: relative; text-align: center;  font-size: 180%;  
+  color: Black;">
+        <img src="img/background.png" style="width: 100%; height: 325px;"/>
+         <div class="centered">
+         <h1 style="font-size:2vw">TRECVID Task on Medical Video Question Answering</h1>
+        <h1 style="font-size:3vw">MedVidQA 2023</h1>
+
+     </div>
+    </div>
+
+
+
+<main>
+    <section style="margin-top: 1cm">
+<h2>Introduction</h2>
+
+
+<div>
+<p>The recent surge in the availability of online videos has changed the way of acquiring information and knowledge. Many people prefer instructional videos to teach or learn how to accomplish a particular task with a series of step-by-step procedures in an effective and efficient manner. In a similar way, medical instructional videos are more suitable and beneficial for delivering key information through visual and verbal communication to consumers' healthcare questions that demand instruction. With an aim to provide visual instructional answers to consumers' first aid, medical emergency, and medical educational questions, this TRECVID task on medical video question answering will introduce a new challenge to foster research toward designing systems that can understand medical videos to provide visual answers to natural language questions and equipped with the multimodal capability to generate instructional questions from the medical video. Following the success of the  <a href="https://medvidqa.github.io/">1st MedVidQA shared task</a> in the BioNLP workshop at ACL 2022, MedVidQA 2023 at TRECVID expanded the tasks and introduced a new track considering language-video understanding and generation. This track is comprised of two main tasks Video Corpus Visual Answer Localization (VCVAL) and Medical Instructional Question Generation (MIQG). 
+
+</p>
+
+</div>
+
+
+
+</section>
+<section id="news" style="margin-bottom: 1cm;">
+<h2>News</h2>
+<ul>
+<li>February 15, 2023: Introducing the MedVidQA 2023 challenge.</li>
+
+</ul>
+</section>
+
+<section id="idates" style="margin-bottom: 1cm;">
+<h2>Important Dates</h2>
+<ul>
+<li><strong> First call for participation:</strong> <span style="font-weight: bold; color: red;">February 15, 2023</span></li>
+<li><strong> Release of the training and validation datasets:</strong> <span style="font-weight: bold; color: red;">May 31, 2023</span></li>
+<li><strong> Release of the test sets:</strong> <span style="font-weight: bold; color: red;">September 5, 2023</span></li>
+<li><strong>Run submission opens on CodaLab:</strong> <span style="font-weight: bold; color: red;">September 15, 2023</span></li>
+<li><strong>Run submission deadline:</strong> <span style="font-weight: bold; color: red;">September 22, 2023</span></li>
+<li><strong>Release of the official results:</strong> <span style="font-weight: bold; color: red;">September 29, 2023</span></li>
+
+</ul>
+Join our <a href="https://groups.google.com/g/trecvid-medvidqa2023">Google Group</a> for important updates! If you have any questions, ask in our <a href="https://groups.google.com/g/trecvid-medvidqa2023">Google Group</a> or <a href="mailto:deepak.gupta@nih.gov">email</a> us.
+
+</section>
+
+
+
+<section id="tasks" style="margin-bottom: 1cm;">
+<h2>Tasks</h2>
+<ul>
+	<li>
+<h3>Task 1: Video Corpus Visual Answer Localization (VCVAL)</h3>
+Given a medical query and a collection of videos, the task aims to retrieve the appropriate video from the video collection and then locate the temporal segments (start and end timestamps) in the video where the answer to the medical query is being shown, or the explanation is illustrated in the video.
+
+<br><br>
+ <img src="img/vcval.png" style="width: 100%;object-fit: cover;"/>
+  <div>
+<center><h5><br>Schematic workflow of the video corpus visual answer localization task. </h5></center>
+</div>
+<br><br>
+</li>
+<li>
+<h3>Task 2: Medical Instructional Question Generation (MIQG)</h3>
+<div><p>
+Given a video segment and its subtitle, the task is to generate the instructional question for which the given video segment is the visual answer. This task comes under multimodal generation, where the system has to consider the video (visual) and subtitle (language) modalities to generate the natural language question.</p></div>
+<br>
+ <img src="img/miqg.png" style="width: 100%;object-fit: cover;"/>
+  <div>
+<center><h5><br> Schematic workflow of the medical instructional question generation task. </h5></center>
+</div>
+</li>
+<br><br>
+</ul>
+For more details, please see our <a href="https://arxiv.org/pdf/2201.12888.pdf">data description paper</a>.
+</section>
+
+
+<section id="datasets" style="margin-bottom: 1cm;">
+<h2>Datasets</h2>
+<ul>
+<li>
+<h5>VCVAL Dataset</h5>
+<ul>
+<li>
+    <strong>Training Dataset:</strong> 
+    
+    <ol>
+    	<li>
+    		
+    		MedVidQA collections <a href="#ref1">[1]</a> consisting of 3,010 human-annotated instructional questions and visual answers from 900 health-related videos.
+    	</li>
+    	<li>
+    		An automatically created HealthVidQA dataset consists of ~50 000 instructional questions and visual answers from 15,000 health-related videos.
+
+    	</li>
+
+    </ol>
+
+</li>
+<li>
+
+    <strong> Validation Dataset:</strong>
+      The validation dataset contains 50 questions and their answer timestamps created from 25 medical instructional videos.
+</li>
+
+</ul>
+</li>
+<li>
+<h5>MIQG Dataset</h5>
+<ul>
+<li>
+    <strong>Training Dataset:</strong> 
+    The training dataset consists of 2710 question and visual segments, which are formulated from 800 medical instructional videos from MedVidQA collections <a href="#ref1">[1]</a>.
+
+</li>
+<li>
+    <strong> Validation Dataset:</strong>
+     The validation dataset contains 145 questions and answers timestamps created from 49 medical instructional videos.
+</li>
+
+</ul>
+</li>
+</ul>
+</section>
+
+
+<section id="eval" style="margin-bottom: 1cm;">
+<h2>Evaluation Metrics</h2>
+<ul>
+<li>
+<h5>VCVAL Evaluation</h5>
+
+
+<ul>
+
+<li><strong>Video retrieval</strong> </li>
+
+<ul>
+<li>Expect a maximum of 5 videos</li>
+<li>precision, recall, and F1-score </li>
+</ul>
+
+<li><strong>Temporal segment prediction</strong> </li>
+
+<ul>
+<li>A model prediction is considered correct if: </li>
+<ol>
+  <li>the predicted video matches one of the ground-truth videos, and </li> 
+<li> the predicted temporal segment overlaps with the ground-truth video </li>
+</ol>
+<li>Intersection over Union (IoU) metric similar to MVAL task <a href="#ref2">[2]</a></li>
+<li>Out of <i>n-retrieved</i> segments from <i>n videos</i>, consider the segment that has the maximum mean IoU value as the predicted segment for the evaluation.</li>
+</ul>
+</ol>
+</ul>
+</li>
+<li>
+<h5>MIQG Evaluation</h5>
+<ul><li>
+<div><p>
+We will evaluate the results using <b>(a)</b> BLEU  <a href="#ref3">[3]</a>, <b>(b)</b> Rouge  <a href="#ref4">[4]</a>, <b>(c)</b> BertScore  <a href="#ref5">[5]</a>, and human evaluation.</p></div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section id="organizers"></section>
+<h2>Organizers</h2>
+<p>
+<a href="https://lhncbc.nlm.nih.gov/LHC-personnel/staff/DeepakGupta.html">
+<div class="item">
+    <img class="headshot" src="img/organizers/deepak.jpeg"/>
+    <span class="name">Deepak Gupta</span>
+    <span class="affiliation">NLM, NIH</span>
+</div>
+</a>
+<a href="https://www.nlm.nih.gov/research/researchstaff/DemnerFushmanDina.html">
+<div class="item">
+    <img class="headshot" src="img/organizers/DinaDemnerFushman.jpg"/>
+    <span class="name">Dina Demner-Fushman</span>
+    <span class="affiliation">NLM, NIH</span>
+</div>
+</a>
+
+</p>
+
+
+<h2>References</h2>
+<div id=ref1>[1] <i>Deepak Gupta, Kush Attal, and Dina Demner-Fushman. A Dataset for Medical Instructional Video Classification and Question Answering
+. arXiv preprint arXiv:2201.12888, 2022. </i></div>
+<div id=ref2>[2] <i>Deepak Gupta, and Dina Demner-Fushman. "Overview of the MedVidQA 2022 Shared Task on Medical Video Question-Answering." BioNLP 2022@ ACL 2022 (2022): 264. </i></div>
+<div id=ref3>[3] <i>Papineni, Kishore, et al. "Bleu: a method for automatic evaluation of machine translation." Proceedings of the 40th annual meeting of the Association for Computational Linguistics. 2002. Vision, pages 2630–2640, 2019. </i></div>
+<div id=ref4>[4] <i>Lin, Chin-Yew. "Rouge: A package for automatic evaluation of summaries." Text summarization branches out. 2004.</i></div>
+<div id=ref5>[5] <i>Zhang, Tianyi, et al. "BERTScore: Evaluating Text Generation with BERT." International Conference on Learning Representations. 2019.</i></div>
+
+</main>
+
+<footer>
+<section>
+<p>&copy; MedVidQA 2023 Organizers; Credit: <a href="https://www.cs.ubc.ca/research/image-matching-challenge/current/" style="color: black;">Image Matching Challenge 2021</a> </p>
+<p>
+    <a href="mailto: trecvid-medvidqa2023@googlegroups.com">E-mail</a>
+</p>
+</section>
+</footer>
+
+</body>
+</html>
