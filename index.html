@@ -103,11 +103,10 @@
 <h2>Important Dates</h2>
 <ul>
 <li><strong> First call for participation:</strong> <span style="font-weight: bold; color: red;">February 15, 2023</span></li>
+<li><strong> Release of the video corpus:</strong> <span style="font-weight: bold; color: red;">April 31, 2023</span></li>
 <li><strong> Release of the training and validation datasets:</strong> <span style="font-weight: bold; color: red;">May 31, 2023</span></li>
-<li><strong> Release of the test sets:</strong> <span style="font-weight: bold; color: red;">September 5, 2023</span></li>
-<li><strong>Run submission opens on CodaLab:</strong> <span style="font-weight: bold; color: red;">September 15, 2023</span></li>
-<li><strong>Run submission deadline:</strong> <span style="font-weight: bold; color: red;">September 22, 2023</span></li>
-<li><strong>Release of the official results:</strong> <span style="font-weight: bold; color: red;">September 29, 2023</span></li>
+<li><strong> Release of the test sets:</strong> <span style="font-weight: bold; color: red;">July 14, 2023</span></li>
+<li><strong>Run submission deadline:</strong> <span style="font-weight: bold; color: red;">July 21, 2023</span></li>
 
 </ul>
 Join our <a href="https://groups.google.com/g/trecvid-medvidqa2023">Google Group</a> for important updates! If you have any questions, ask in our <a href="https://groups.google.com/g/trecvid-medvidqa2023">Google Group</a> or <a href="mailto:deepak.gupta@nih.gov">email</a> us.
@@ -128,8 +127,11 @@ Given a medical query and a collection of videos, the task aims to retrieve the 
   <div>
 <center><h5><br>Schematic workflow of the video corpus visual answer localization task. </h5></center>
 </div>
-<br><br>
 </li>
+<div>
+The VCVAL task consists of two subtasks: <b>(a)</b> Video Retrieval, and <b>(b)</b> Temporal Segment Prediction.
+</div>
+<br><br>
 <li>
 <h3>Task 2: Medical Instructional Question Generation (MIQG)</h3>
 <div><p>
@@ -174,6 +176,11 @@ For more details, please see our <a href="https://arxiv.org/pdf/2201.12888.pdf">
       The validation dataset contains 50 questions and their answer timestamps created from 25 medical instructional videos.
 </li>
 
+<li>
+
+    <strong> Test Dataset:</strong>
+      The test dataset contains 50 questions and their answer timestamps created from 25 medical instructional videos.
+</li>
 </ul>
 </li>
 <li>
@@ -187,6 +194,11 @@ For more details, please see our <a href="https://arxiv.org/pdf/2201.12888.pdf">
 <li>
     <strong> Validation Dataset:</strong>
      The validation dataset contains 145 questions and answers timestamps created from 49 medical instructional videos.
+</li>
+
+<li>
+    <strong> Test Dataset:</strong>
+     The test dataset contains 100 questions and answers timestamps created from 45 medical instructional videos.
 </li>
 
 </ul>
@@ -207,20 +219,21 @@ For more details, please see our <a href="https://arxiv.org/pdf/2201.12888.pdf">
 <li><strong>Video retrieval</strong> </li>
 
 <ul>
-<li>Expect a maximum of 5 videos</li>
-<li>precision, recall, and F1-score </li>
+<li>Expect a minimum of 1 and a maximum of 1000 videos</li>
+<li>Post hoc evalaution based on pooling <a href="#ref2">[2]</a><a href="#ref3">[3]</a>  </li>
 </ul>
 
 <li><strong>Temporal segment prediction</strong> </li>
 
 <ul>
+<li>First, we will create relevant temporal segments from the top-5 judged relevant videos. Additionally, we will add a few more temporal segments from top-10 judged relevant videos. </li>
 <li>A model prediction is considered correct if: </li>
 <ol>
-  <li>the predicted video matches one of the ground-truth videos, and </li> 
-<li> the predicted temporal segment overlaps with the ground-truth video </li>
+  <li>the predicted video matches one of the judged relevance videos, and </li> 
+<li> the predicted temporal segment overlaps with the judged temporal segments </li>
 </ol>
-<li>Intersection over Union (IoU) metric similar to MVAL task <a href="#ref2">[2]</a></li>
-<li>Out of <i>n-retrieved</i> segments from <i>n videos</i>, consider the segment that has the maximum mean IoU value as the predicted segment for the evaluation.</li>
+<li>Intersection over Union (IoU) metric similar to MVAL task <a href="#ref4">[4]</a></li>
+<li>Mean IoU of the <i>n-retrieved</i> segments from <i>n videos</i>.</li>
 </ul>
 </ol>
 </ul>
@@ -229,7 +242,7 @@ For more details, please see our <a href="https://arxiv.org/pdf/2201.12888.pdf">
 <h5>MIQG Evaluation</h5>
 <ul><li>
 <div><p>
-We will evaluate the results using <b>(a)</b> BLEU  <a href="#ref3">[3]</a>, <b>(b)</b> Rouge  <a href="#ref4">[4]</a>, <b>(c)</b> BertScore  <a href="#ref5">[5]</a>, and human evaluation.</p></div>
+We will evaluate the results using <b>(a)</b> BLEU  <a href="#ref5">[5]</a>, <b>(b)</b> Rouge  <a href="#ref6">[6]</a>, <b>(c)</b> BertScore  <a href="#ref7">[7]</a>.</p></div>
 </li>
 </ul>
 </li>
@@ -260,10 +273,13 @@ We will evaluate the results using <b>(a)</b> BLEU  <a href="#ref3">[3]</a>, <b>
 <h2>References</h2>
 <div id=ref1>[1] <i>Deepak Gupta, Kush Attal, and Dina Demner-Fushman. A Dataset for Medical Instructional Video Classification and Question Answering
 . arXiv preprint arXiv:2201.12888, 2022. </i></div>
-<div id=ref2>[2] <i>Deepak Gupta, and Dina Demner-Fushman. "Overview of the MedVidQA 2022 Shared Task on Medical Video Question-Answering." BioNLP 2022@ ACL 2022 (2022): 264. </i></div>
-<div id=ref3>[3] <i>Papineni, Kishore, et al. "Bleu: a method for automatic evaluation of machine translation." Proceedings of the 40th annual meeting of the Association for Computational Linguistics. 2002. Vision, pages 2630–2640, 2019. </i></div>
-<div id=ref4>[4] <i>Lin, Chin-Yew. "Rouge: A package for automatic evaluation of summaries." Text summarization branches out. 2004.</i></div>
-<div id=ref5>[5] <i>Zhang, Tianyi, et al. "BERTScore: Evaluating Text Generation with BERT." International Conference on Learning Representations. 2019.</i></div>
+<div id=ref2>[2] <i>Sparck Jones. Report on the need for and provision of an" ideal" information retrieval test collection. 1975.</i></div>
+<div id=ref3>[3] <i>Chris Buckley, Darrin Dimmick, Ian Soboroff, and Ellen Voorhees. Bias and the limits of pooling for large collections. Information retrieval, 10(6):491–508, 2007</i></div>
+<div id=ref4>[4] <i>Deepak Gupta, and Dina Demner-Fushman. "Overview of the MedVidQA 2022 Shared Task on Medical Video Question-Answering." BioNLP 2022@ ACL 2022 (2022): 264. </i></div>
+
+<div id=ref5>[5] <i>Papineni, Kishore, et al. "Bleu: a method for automatic evaluation of machine translation." Proceedings of the 40th annual meeting of the Association for Computational Linguistics. 2002. Vision, pages 2630–2640, 2019. </i></div>
+<div id=ref6>[6] <i>Lin, Chin-Yew. "Rouge: A package for automatic evaluation of summaries." Text summarization branches out. 2004.</i></div>
+<div id=ref7>[7] <i>Zhang, Tianyi, et al. "BERTScore: Evaluating Text Generation with BERT." International Conference on Learning Representations. 2019.</i></div>
 
 </main>
 
